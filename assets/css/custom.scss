@@ -1,0 +1,12 @@
+/* _variables override */
+:root {
+  --color-bg: #111;  
+  --color-heading: #f2e9dc;
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "IBM Plex Mono", monospace;
+}
+
+/* additional styles */
+body {
+  background-color: #111 !important;
+}
