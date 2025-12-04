@@ -1,0 +1,70 @@
+/* GLOBAL STYLES */
+body {
+  background-color: $color-bg;
+  color: $color-text;
+  font-family: $font-body;
+}
+
+
+
+
+/* Override body background */
+body.bg-neutral {
+  background-color: #111;
+}
+
+/* Override main text */
+.prose {
+  color: #d0cfcf;
+}
+
+/* Override header colour */
+header {
+  background-color: #111;
+}
+
+
+
+
+/* TYPOGRAPHY */
+h1, h2, h3, h4 {
+  font-family: $font-heading;
+  color: $color-text !important;
+}
+
+/* HERO VIDEO */
+.hero-video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: $color-bg-alt;
+  position: relative;
+  overflow: hidden;
+  filter: contrast(110%) brightness(90%);
+}
+
+.hero-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/textures/grain.png") repeat;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* INTRO PARAGRAPH */
+section.hero,
+p {
+  font-family: $font-body;
+  color: $color-text;
+}
+
+/* PADDING / LAYOUT */
+main {
+  padding: 3rem;
+}
+
+/* FOOTER */
+.site-footer {
+  color: $color-text !important;
+  border-top: 1px solid $color-bg-alt;
+}
