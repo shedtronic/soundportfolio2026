@@ -1,0 +1,122 @@
+/* --------------------------------------------------
+   GLOBAL VARIABLES (CSS custom properties)
+   -------------------------------------------------- */
+
+:root {
+  --color-bg: #0a0a0a;
+  --color-bg-alt: #111111;
+  --color-text: #e9e5d8;
+  --color-heading: #f2e9dc;
+
+  --color-primary: #d2412b;      /* aged blood-red */
+  --color-accent: #b97a56;       /* earthy brown */
+  --color-muted: #6d6d6d;
+  --color-shadow: rgba(0,0,0,0.7);
+
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "IBM Plex Mono", monospace;
+
+  --max-width: 1600px;
+}
+
+/* --------------------------------------------------
+   GLOBAL OVERRIDES
+   -------------------------------------------------- */
+
+body {
+  background-color: var(--color-bg) !important;
+  color: var(--color-text) !important;
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+/* Congo adds .bg-neutral sometimes */
+body.bg-neutral {
+  background-color: var(--color-bg) !important;
+}
+
+/* Page wrapper */
+main {
+  padding: 3rem 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------
+   TYPOGRAPHY
+   -------------------------------------------------- */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-heading) !important;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  letter-spacing: 0.1em;
+  color: #ff006a !important;  /* supernatural pink accent */
+}
+
+p, section.hero {
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+/* --------------------------------------------------
+   HEADER
+   -------------------------------------------------- */
+
+header.site-header,
+header {
+  background-color: var(--color-bg-alt) !important;
+  border-bottom: 1px solid #000;
+}
+
+/* --------------------------------------------------
+   HERO VIDEO SECTION
+   -------------------------------------------------- */
+
+.hero-video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--color-bg-alt);
+  position: relative;
+  overflow: hidden;
+  filter: contrast(110%) brightness(90%);
+}
+
+.hero-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/textures/grain.png") repeat;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------
+   PROSE / TEXT SECTIONS
+   -------------------------------------------------- */
+
+.prose {
+  color: var(--color-text) !important;
+}
+
+.prose a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------
+   FOOTER
+   -------------------------------------------------- */
+
+.site-footer {
+  color: var(--color-text) !important;
+  border-top: 1px solid var(--color-bg-alt);
+  opacity: 0.9;
+}

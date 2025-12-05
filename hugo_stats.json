@@ -7,19 +7,16 @@
       "div",
       "footer",
       "h1",
-      "head",
       "header",
       "html",
       "iframe",
       "link",
       "main",
-      "meta",
       "nav",
       "p",
       "script",
       "section",
-      "span",
-      "title"
+      "span"
     ],
     "classes": [
       "-mx-2",
