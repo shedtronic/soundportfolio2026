@@ -1,6 +1,6 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = "https://soundportfolio2026.netlify.app/"
+languageCode = "en-us"
+title = "Sound Portfolio 2026"
 theme = "congo"
 
 [build]
@@ -8,8 +8,3 @@ theme = "congo"
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
-
-[params.assets]
-  disableFingerprinting = false
-  disablePipeline = false
-  css = ["scss/main.scss"]
