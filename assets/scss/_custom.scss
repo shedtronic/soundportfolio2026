@@ -2,7 +2,6 @@
 /* ============ GLOBAL LAYOUT RESET ============ */
 /* ============================================= */
 
-/* Remove Congo’s forced content width */
 body,
 main,
 .page,
@@ -21,8 +20,7 @@ main,
   width: 100% !important;
 }
 
-
-/* Restore basic breathing room on the home page */
+/* Basic breathing room */
 body {
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
@@ -35,42 +33,7 @@ body {
   }
 }
 
-
-/* Fix: remove the boxed 850px container you had */
-main {
-  max-width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-
-
-
-/* Mobile-only padding for the big title */
-@media (max-width: 640px) {
-  .cinematic-title,
-  h1,
-  .page-title,
-  .hero-title {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-}
-
-
-@media (max-width: 640px) {
-  h1 {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-}
-
-
-
-/* ============================================= */
-/* ============= FULL-BLEED ELEMENTS =========== */
-/* ============================================= */
-
+/* Full-bleed elements */
 .full-bleed {
   width: 100vw;
   margin-left: 50%;
@@ -86,49 +49,176 @@ main {
   display: block;
 }
 
+
 /* ============================================= */
-/* ============= HERO VIDEO BLOCK ============== */
+/* ================ HEADER OVERRIDE ============ */
 /* ============================================= */
 
+.site-header,
+.header,
+.header__inner,
+.header-container,
+.header-placeholder {
+  display: none !important;
+}
+
+/* Custom Broadcast Header */
+.broadcast-header {
+  width: 100%;
+  background: #0b0b0b;
+  border-bottom: 1px solid #222;
+  padding: 0.6rem 0;
+}
+
+.broadcast-header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.broadcast-header .brand a {
+  color: #eee;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.broadcast-header .nav a {
+  margin-left: 1.75rem;
+  color: #cfcfcf;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.broadcast-header .nav a:hover {
+  color: #fff;
+}
+
+
+/* ============================================= */
+/* OPTION C — FULL-WIDTH CINEMATIC HERO TITLE    */
+/* ============================================= */
+
+.broadcast-hero {
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+/* One-line cinematic statement */
+.radiophonic-hero-title {
+  font-family: var(--font-header), monospace;
+  font-size: clamp(2rem, 3.8vw, 3.6rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  color: #e0417d;
+  margin: 2.5rem auto 1.5rem auto;
+  padding: 0 1.25rem;
+  max-width: 1200px;  /* keeps it from stretching too far */
+  text-align: center;
+}
+
+/* Subtle Radiophonic flavour without weirdness */
+.radiophonic-hero-title::after {
+  content: "";
+  display: block;
+  width: 40%;
+  max-width: 280px;
+  margin: 1rem auto 0;
+  border-bottom: 1px solid rgba(224, 65, 125, 0.35);
+}
+
+.broadcast-hero {
+  position: relative;
+}
+
+.broadcast-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/grain.png'); /* You provide the file */
+  opacity: 0.12;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+
+
+
+/* Soft CRT glow */
+.radiophonic-hero-title {
+  text-shadow:
+    0 0 6px rgba(224, 65, 125, 0.35),
+    0 0 12px rgba(224, 65, 125, 0.25);
+}
+
+
+/* Radiophonic micro-jitter */
+@keyframes radiophonic-jitter {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(0.4px, -0.2px); }
+  50%  { transform: translate(-0.3px, 0.3px); }
+  75%  { transform: translate(0.2px, -0.4px); }
+  100% { transform: translate(0, 0); }
+}
+
+.radiophonic-hero-title {
+  animation: radiophonic-jitter 2.5s infinite steps(2);
+}
+
+
+
+
+/* ============================================= */
+/* ============ VIDEO FIX — SAFE FULL WIDTH ===== */
+/* ============================================= */
+
+.hero-video {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
 .hero-video iframe {
-  width: 100vw !important;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
   height: auto;
+  display: block;
   aspect-ratio: 16/9;
 }
 
-/* Mobile adjustment */
 @media (max-width: 640px) {
   .hero-video iframe {
     aspect-ratio: 4/3;
   }
 }
 
+
 /* ============================================= */
-/* ============== CINEMATIC TEXT =============== */
+/* ============== TYPOGRAPHY ==================== */
 /* ============================================= */
 
-.cinematic-title {
-  font-size: clamp(2.5rem, 4vw, 4.5rem);
-  text-align: center;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  margin: 2rem auto;
-  color: #e0417d;
-  max-width: 90vw;
+h1 {
+  font-family: var(--font-header);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin: 0.5rem 0 1rem;
 }
 
-.text-block {
-  max-width: 65ch;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  font-size: 1.25rem;
-  line-height: 1.7;
+p, li {
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
 }
 
+
 /* ============================================= */
-/* =============== SUBSTACK LIST =============== */
+/* =============== SUBSTACK FEED =============== */
 /* ============================================= */
 
 .substack-feed {
@@ -137,15 +227,11 @@ main {
   padding: 0 1rem;
 }
 
-.substack-post-card {
-  margin: 1rem 0;
-}
-
 .substack-post-title {
   color: #e0417d;
   font-weight: 600;
-  text-decoration: none;
   font-size: 1.2rem;
+  text-decoration: none;
 }
 
 .substack-post-title:hover {
@@ -158,29 +244,12 @@ main {
 }
 
 
-
-/* Kill Congo’s default content box */
-.wrapper,
-.page-content,
-.content,
-.article-container,
-.content-wrapper {
-  max-width: 100% !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-
-
-
-
-/* --- SUBSTACK CARD GRID --- */
+/* ============================================= */
+/* ========= SUBSTACK CARD GRID ================ */
+/* ============================================= */
 
 .substack-grid-wrapper {
   margin: 4rem auto;
-  width: 100%;
   max-width: 1400px;
 }
 
@@ -196,10 +265,9 @@ main {
   border: 1px solid #333;
   border-radius: 12px;
   overflow: hidden;
-  cursor: pointer;
-  transition: 0.25s ease;
   display: flex;
   flex-direction: column;
+  transition: 0.25s ease;
 }
 
 .substack-card:hover {
@@ -211,21 +279,19 @@ main {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  display: block;
 }
 
 .substack-card-content {
   padding: 1rem 1.25rem;
-  flex: 1;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .substack-card-title {
+  color: #e0417d;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #e0417d;
-  margin-bottom: 0.5rem;
 }
 
 .substack-card-excerpt {
@@ -241,50 +307,15 @@ main {
 }
 
 
-
-
 /* ============================================= */
-/* ============ RESPONSIVE TYPOGRAPHY ========== */
+/* ============= MOBILE SAFE PADDING =========== */
 /* ============================================= */
 
-h1 { font-size: clamp(1.8rem, 4vw, 3rem); }
-p, li { font-size: clamp(1rem, 2.2vw, 1.25rem); }
-
-/* Remove Congo’s side padding on mobile too */
 @media (max-width: 640px) {
-  body, main, .content {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-}
-
-
-
-/* -------------------------------------- */
-/*  MOBILE HEADER + FOOTER SAFE PADDING   */
-/* -------------------------------------- */
-@media (max-width: 640px) {
-
-  /* Site Title ("Sound Portfolio 2026") */
-  .site-brand,
-  .brand,
-  header .brand,
-  header .site-title,
-  .site-header .brand {
+  .brand {
     padding-left: 1rem !important;
-    padding-right: 1rem !important;
   }
 
-  /* Header container (in case Congo wraps it) */
-  header.site-header,
-  .site-header {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-
-  /* Footer wrapper */
-  footer,
-  .site-footer,
   .footer {
     padding-left: 1rem !important;
     padding-right: 1rem !important;

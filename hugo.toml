@@ -1,6 +1,6 @@
 baseURL = "https://soundportfolio2026.netlify.app/"
 languageCode = "en-us"
-title = "Sound Portfolio 2026"
+title = "Mike Ballard"
 theme = "congo"
 
 [build]
@@ -12,4 +12,4 @@ theme = "congo"
 [markup.goldmark.renderer]
 unsafe = true
 
-
+header.layout = "hybrid"
