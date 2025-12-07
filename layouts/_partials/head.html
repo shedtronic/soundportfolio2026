@@ -1,2 +1,73 @@
-{{ $scss := resources.Get "scss/main.scss" | toCSS | minify }}
-<link rel="stylesheet" href="{{ $scss.RelPermalink }}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="{{ .Site.Params.defaultThemeColor | default "#ffffff" }}" />
+
+  {{/* TITLE */}}
+  {{ if .IsHome -}}
+    <title>{{ .Site.Title | emojify }}</title>
+    <meta name="title" content="{{ .Site.Title | emojify }}" />
+  {{- else -}}
+    <title>{{ .Title | emojify }} &middot; {{ .Site.Title | emojify }}</title>
+    <meta name="title" content="{{ .Title | emojify }} &middot; {{ .Site.Title | emojify }}" />
+  {{- end }}
+
+  {{/* ---- YOUR CUSTOM SCSS OVERRIDE ---- */}}
+  {{ $scss := resources.Get "scss/main.scss" }}
+  {{ if not $scss }}
+    {{ errorf "SCSS file not found: assets/scss/main.scss" }}
+  {{ end }}
+  {{ $css := $scss | toCSS | minify }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  {{/* ---- END OF CUSTOM OVERRIDE ---- */}}
+
+  {{/* Asset bundles from theme */}}
+  {{ $assets := newScratch }}
+  {{ $algorithm := .Site.Params.fingerprintAlgorithm | default "sha256" }}
+  {{ $jsAppearance := resources.Get "js/appearance.js" }}
+  {{ $jsAppearance = $jsAppearance | resources.Minify | resources.Fingerprint $algorithm }}
+  <script type="text/javascript"
+      src="{{ $jsAppearance.Permalink }}"
+      integrity="{{ $jsAppearance.Data.Integrity }}">
+  </script>
+
+  {{/* CSS Scheme */}}
+  {{ $cssScheme := resources.Get (printf "css/schemes/%s.css" (lower .Site.Params.colorScheme | default "congo")) }}
+  {{ if not $cssScheme }}
+    {{ $cssScheme = resources.Get "css/schemes/congo.css" }}
+  {{ end }}
+  {{ $assets.Add "css" (slice $cssScheme) }}
+
+  {{ $cssMain := resources.Get "css/compiled/main.css" }}
+  {{ $assets.Add "css" (slice $cssMain) }}
+
+  {{ $cssCustom := resources.Get "css/custom.css" }}
+  {{ if $cssCustom }}
+    {{ $assets.Add "css" (slice $cssCustom) }}
+  {{ end }}
+
+  {{ $bundleCSS := $assets.Get "css" | resources.Concat "css/main.bundle.css" | resources.Minify | resources.Fingerprint $algorithm }}
+  <link rel="stylesheet" href="{{ $bundleCSS.Permalink }}" integrity="{{ $bundleCSS.Data.Integrity }}" />
+
+  {{/* JS bundles */}}
+  {{ if $assets.Get "js" }}
+    {{ $bundleJS := $assets.Get "js" | resources.Concat "js/main.bundle.js" | resources.Minify | resources.Fingerprint $algorithm }}
+    <script defer id="script-bundle"
+        src="{{ $bundleJS.Permalink }}"
+        integrity="{{ $bundleJS.Data.Integrity }}">
+    </script>
+  {{ end }}
+
+  {{/* META DESCRIPTION */}}
+  <meta name="description"
+      content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+
+  {{/* OPENGRAPH + TWITTER TAGS (THE CRITICAL PART) */}}
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+
+  {{ partial "schema.html" . }}
+  {{ partial "vendor.html" . }}
+  {{ partial "analytics.html" . }}
+
+</head>

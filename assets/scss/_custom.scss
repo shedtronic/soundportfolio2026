@@ -1,12 +1,292 @@
+/* ============================================= */
+/* ============ GLOBAL LAYOUT RESET ============ */
+/* ============================================= */
+
+/* Remove Congo’s forced content width */
+body,
+main,
+.page,
+.section,
+.wrapper,
+.content,
+.prose,
+.page-content,
+.article-container,
+.content-wrapper {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+
+/* Restore basic breathing room on the home page */
 body {
-  background-color: $color-bg;
-  color: $color-secondary;
-  font-family: $font-body;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
 }
 
-h1 {
-  color: $color-primary;
-  letter-spacing: 0.1em;
+@media (min-width: 900px) {
+  body {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
 }
 
-/* Add more custom CSS here */
+
+/* Fix: remove the boxed 850px container you had */
+main {
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+
+
+
+/* Mobile-only padding for the big title */
+@media (max-width: 640px) {
+  .cinematic-title,
+  h1,
+  .page-title,
+  .hero-title {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+
+@media (max-width: 640px) {
+  h1 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+
+
+/* ============================================= */
+/* ============= FULL-BLEED ELEMENTS =========== */
+/* ============================================= */
+
+.full-bleed {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+}
+
+.full-bleed img,
+.full-bleed iframe,
+.full-bleed video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================= */
+/* ============= HERO VIDEO BLOCK ============== */
+/* ============================================= */
+
+.hero-video iframe {
+  width: 100vw !important;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
+/* Mobile adjustment */
+@media (max-width: 640px) {
+  .hero-video iframe {
+    aspect-ratio: 4/3;
+  }
+}
+
+/* ============================================= */
+/* ============== CINEMATIC TEXT =============== */
+/* ============================================= */
+
+.cinematic-title {
+  font-size: clamp(2.5rem, 4vw, 4.5rem);
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin: 2rem auto;
+  color: #e0417d;
+  max-width: 90vw;
+}
+
+.text-block {
+  max-width: 65ch;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+
+/* ============================================= */
+/* =============== SUBSTACK LIST =============== */
+/* ============================================= */
+
+.substack-feed {
+  max-width: 65ch;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.substack-post-card {
+  margin: 1rem 0;
+}
+
+.substack-post-title {
+  color: #e0417d;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.substack-post-title:hover {
+  text-decoration: underline;
+}
+
+.substack-post-date {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+
+
+/* Kill Congo’s default content box */
+.wrapper,
+.page-content,
+.content,
+.article-container,
+.content-wrapper {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+
+
+
+
+/* --- SUBSTACK CARD GRID --- */
+
+.substack-grid-wrapper {
+  margin: 4rem auto;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.substack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.substack-card {
+  background: #0f0f0f;
+  border: 1px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.substack-card:hover {
+  border-color: #e0417d;
+  transform: translateY(-4px);
+}
+
+.substack-card-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.substack-card-content {
+  padding: 1rem 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.substack-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e0417d;
+  margin-bottom: 0.5rem;
+}
+
+.substack-card-excerpt {
+  font-size: 0.9rem;
+  color: #ccc;
+  flex-grow: 1;
+}
+
+.substack-card-date {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 1rem;
+}
+
+
+
+
+/* ============================================= */
+/* ============ RESPONSIVE TYPOGRAPHY ========== */
+/* ============================================= */
+
+h1 { font-size: clamp(1.8rem, 4vw, 3rem); }
+p, li { font-size: clamp(1rem, 2.2vw, 1.25rem); }
+
+/* Remove Congo’s side padding on mobile too */
+@media (max-width: 640px) {
+  body, main, .content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+
+
+/* -------------------------------------- */
+/*  MOBILE HEADER + FOOTER SAFE PADDING   */
+/* -------------------------------------- */
+@media (max-width: 640px) {
+
+  /* Site Title ("Sound Portfolio 2026") */
+  .site-brand,
+  .brand,
+  header .brand,
+  header .site-title,
+  .site-header .brand {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Header container (in case Congo wraps it) */
+  header.site-header,
+  .site-header {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Footer wrapper */
+  footer,
+  .site-footer,
+  .footer {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
