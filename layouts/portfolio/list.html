@@ -8,4 +8,34 @@
   {{ .Content }}
 </section>
 
+<div class="portfolio-filter-bar">
+  {{ range $tag, $_ := .Site.Taxonomies.tags }}
+    <a class="filter-chip" href="{{ "/tags/" | relURL }}{{ $tag | urlize }}">{{ $tag }}</a>
+  {{ end }}
+</div>
+
+<section class="project-grid">
+
+  {{ range .Pages.ByWeight }}
+    <article class="project-card">
+
+      <a href="{{ .RelPermalink }}">
+
+        {{ with .Params.thumbnail }}
+          <img class="project-thumb" src="{{ . | relURL }}" alt="{{ $.Title }} thumbnail">
+        {{ end }}
+
+        <h2 class="project-title">{{ .Title }}</h2>
+
+        {{ with .Params.summary }}
+          <p class="project-summary">{{ . }}</p>
+        {{ end }}
+
+      </a>
+
+    </article>
+  {{ end }}
+
+</section>
+
 {{ end }}

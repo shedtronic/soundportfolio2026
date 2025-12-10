@@ -1,14 +1,22 @@
 {{ define "main" }}
 
 <section class="broadcast-hero">
-  <h1 class="radiophonic-hero-title">
-    Atmospheric Sound Design, Composition &amp; Worldbuilding<br>
-    for Film and Games
-  </h1>
+  {{ partial "home/hero.html" . }}
 </section>
 
 <section class="homepage-showreel">
+  {{ partial "home/showreel.html" . }}
+</section>
+
+<section class="homepage-intro">
   {{ .Content }}
 </section>
+
+<section class="homepage-featured">
+  {{ partial "home/featured.html" . }}
+ 
+</section>
+
+
 
 {{ end }}

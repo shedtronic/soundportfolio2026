@@ -7,3 +7,9 @@
   HUGO_EXTENDED = "true"
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
+
+[[scheduled]]
+  name = "rss-refresh"
+  cron = "0 */3 * * *" # every 3 hours
+  command = "hugo --gc --minify"
+

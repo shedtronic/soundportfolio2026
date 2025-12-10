@@ -1,22 +1,9 @@
 ---
 title: "Selected Works"
+summary: "A curated selection of sound design, composition, and audiovisual projects."
 ---
 
-Below is a curated selection of work across film, games, experimental media and atmospheric soundworlds.
+Below is a selection of current and representative projects that demonstrate my approach to sound design, composition, worldbuilding, and experimental audio tool creation.
 
----
-
-### Project 1 — Title Here
-Short summary of what the project involved.  
-What you did. Tools used.  
-Add thumbnails or embeds as needed.
-
----
-
-### Project 2 — Title Here
-Description + optional video embed.
-
----
-
-### Project 3 — Title Here
-(Repeat for as many projects as you want.)
+Each project highlights a different aspect of my practice:  
+atmospheric scoring, narrative sound design, glitch-driven instruments, and collaborative media work.
