@@ -9,7 +9,6 @@
   HUGO_ENABLEGITINFO = "true"
 
 [[scheduled]]
-  name = "rss-refresh"
+  id = "rss-refresh"
   cron = "0 */3 * * *" # every 3 hours
   command = "hugo --gc --minify"
-

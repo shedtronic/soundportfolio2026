@@ -11,8 +11,10 @@ theme = "congo"
 
 [markup.goldmark.renderer]
 unsafe = true
-
-header.layout = "basic"
-
 [params]
   substackFeed = "https://pushingtheenvelopegenerator.substack.com/feed"
+
+  header.layout = "basic"
+
+
+  
