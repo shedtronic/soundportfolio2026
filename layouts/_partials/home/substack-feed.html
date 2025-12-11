@@ -1,4 +1,4 @@
-{{/* Load feed URL from config */}}
+{{/* Get Substack feed URL + limit */}}
 {{ $url := .Site.Params.substackFeed }}
 {{ $limit := .Site.Params.substackLimit | default 4 }}
 
@@ -7,65 +7,66 @@
 
     {{ with resources.GetRemote $url | transform.Unmarshal }}
 
-    {{/* 1. Normalise dates so Hugo can parse them reliably */}}
-    {{ $items := slice }}
-    {{ range .channel.item }}
-        {{ $parsed := dict 
-            "title" .title
-            "link" .link
-            "encoded" .encoded
-            "enclosure" .enclosure
-            "pub" (time .pubDate)
-        }}
-        {{ $items = $items | append $parsed }}
-    {{ end }}
-
-    {{/* 2. Sort newest → oldest */}}
-    {{ $sorted := sort $items "pub" "desc" }}
-
-    {{/* 3. Take the first N items */}}
-    {{ $posts := first $limit $sorted }}
+    {{ $posts := first $limit .channel.item }}
 
     <div class="substack-grid">
+
         {{ range $posts }}
 
-        {{/* Extract excerpt */}}
-        {{ $excerpt := .encoded | safeHTML | plainify | truncate 140 }}
+            {{/* --- 1. START: Extract excerpt --- */}}
+            {{ $excerpt := .encoded | safeHTML | plainify | truncate 140 }}
 
-        {{/* Try enclosure image */}}
-        {{ $img := "" }}
-        {{ with .enclosure }}
-            {{ $img = index . "url" }}
-        {{ end }}
+            {{/* --- 2. START: Determine post image --- */}}
+            {{ $img := "" }}
 
-        {{/* Fallback: first <img> in encoded HTML */}}
-        {{ if not $img }}
-            {{ $found := findRE `img.*src="([^"]+)"` (.encoded | safeHTML) 1 }}
-            {{ if $found }}
-                {{ $img = replaceRE `.*src="([^"]+)".*` "$1" (index $found 0) }}
+            {{/* Case A — enclosure image exists */}}
+            {{ with .enclosure }}
+                {{ $img = index . "url" }}
             {{ end }}
-        {{ end }}
 
-        {{/* Final fallback */}}
-        {{ if not $img }}
-            {{ $img = "/images/substack-placeholder.png" }}
-        {{ end }}
+            {{/* Case B — extract first <img> from encoded HTML */}}
+            {{ if not $img }}
+                {{ $html := .encoded | safeHTML }}
+                {{ $found := findRE `img.*src="([^"]+)"` $html 1 }}
+                {{ if $found }}
+                    {{ $img = replaceRE `.*src="([^"]+)".*` "$1" (index $found 0) }}
+                {{ end }}
+            {{ end }}
 
-        <div class="substack-card" onclick="window.location='{{ .link }}'">
-            <div class="substack-card-image">
-                <img src="{{ $img }}" alt="{{ .title }}">
+            {{/* Case C — detect YouTube in content and extract video ID */}}
+            {{ if not $img }}
+                {{ $yt := findRE `(?:youtube\.com\/embed\/|youtube-nocookie\.com\/embed\/|youtu\.be\/)([A-Za-z0-9_-]+)` .encoded 1 }}
+                {{ if $yt }}
+                    {{ $id := replaceRE `.*(embed\/|youtu\.be\/)([A-Za-z0-9_-]+).*` "$2" (index $yt 0) }}
+                    {{/* Use YouTube max resolution thumbnail */}}
+                    {{ $img = printf "https://img.youtube.com/vi/%s/maxresdefault.jpg" $id }}
+                {{ end }}
+            {{ end }}
+
+            {{/* Case D — final fallback */}}
+            {{ if not $img }}
+                {{ $img = "/images/substack-placeholder.png" }}
+            {{ end }}
+
+            {{/* --- 3. Render card --- */}}
+            <div class="substack-card" onclick="window.location='{{ .link }}'">
+
+                <div class="substack-card-image">
+                    <img src="{{ $img }}" alt="{{ .title | htmlUnescape }}">
+                </div>
+
+                <div class="substack-card-content">
+                    <h3 class="substack-card-title">{{ .title | htmlUnescape }}</h3>
+                    <p class="substack-card-excerpt">{{ $excerpt }}</p>
+                    <p class="substack-card-date">{{ dateFormat "02 Jan 2006" .pubDate }}</p>
+                </div>
+
             </div>
 
-            <div class="substack-card-content">
-                <h3 class="substack-card-title">{{ .title }}</h3>
-                <p class="substack-card-excerpt">{{ $excerpt }}</p>
-                <p class="substack-card-date">{{ dateFormat "02 Jan 2006" .pub }}</p>
-            </div>
-        </div>
-
         {{ end }}
+
     </div>
-
     {{ end }}
+
 </div>
 {{ end }}
