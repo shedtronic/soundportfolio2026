@@ -11,10 +11,16 @@ theme = "congo"
 
 [markup.goldmark.renderer]
 unsafe = true
+
 [params]
   substackFeed = "https://pushingtheenvelopegenerator.substack.com/feed"
-
+  substackLimit = 4
   header.layout = "basic"
+
+[caches]
+  [caches.getresource]
+    dir = ":resourceDir/_gen"
+    maxAge = "0s"
 
 
   

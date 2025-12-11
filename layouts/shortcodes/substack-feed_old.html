@@ -3,27 +3,32 @@
 {{ $limit := .Get "limit" | default 6 }}
 
 <div class="substack-grid-wrapper">
+
     {{ with resources.GetRemote $url | transform.Unmarshal }}
 
     <div class="substack-grid">
         {{ range first $limit .channel.item }}
 
         {{ $excerpt := .encoded | safeHTML | plainify | truncate 140 }}
+        {{ $img := "" }}
+
+        {{ with .enclosure }}
+            {{ with .url }}
+                {{ $img = . }}
+            {{ end }}
+        {{ end }}
 
         <div class="substack-card" onclick="window.location='{{ .link }}'">
-            
+
+            {{ if $img }}
             <div class="substack-card-image">
-                {{ with .enclosure }}
-                    {{ $img := index . "-url" }}
-                    <img src="{{ $img }}" alt="{{ .title | htmlUnescape }}">
-                {{ end }}
+                <img src="{{ $img }}" alt="{{ .title | htmlUnescape }}">
             </div>
+            {{ end }}
 
             <div class="substack-card-content">
                 <h3 class="substack-card-title">{{ .title | htmlUnescape }}</h3>
-
                 <p class="substack-card-excerpt">{{ $excerpt }}</p>
-
                 <p class="substack-card-date">{{ dateFormat "02 Jan 2006" .pubDate }}</p>
             </div>
 
@@ -33,5 +38,6 @@
     </div>
 
     {{ end }}
+
 </div>
 {{ end }}

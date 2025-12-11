@@ -1,22 +1,33 @@
 {{ define "main" }}
 
+<!-- HERO TITLE -->
 <section class="broadcast-hero">
   {{ partial "home/hero.html" . }}
 </section>
 
+<!-- HERO VIDEO -->
 <section class="homepage-showreel">
   {{ partial "home/showreel.html" . }}
 </section>
 
+<!-- SHORT INTRO -->
 <section class="homepage-intro">
-  {{ .Content }}
+  <div class="intro-text">
+    <p>
+      Exploring the blurred line between memory, place, and the uncanny through immersive audio,
+      field recording, and experimental sound design.
+    </p>
+  </div>
 </section>
 
+<!-- FEATURED PROJECTS -->
 <section class="homepage-featured">
   {{ partial "home/featured.html" . }}
- 
 </section>
 
-
+<!-- SUBSTACK FEED -->
+<section class="homepage-substack">
+    {{ partial "home/substack-feed.html" . }}
+</section>
 
 {{ end }}
