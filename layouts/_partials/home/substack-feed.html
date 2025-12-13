@@ -1,72 +1,94 @@
-{{/* Get Substack feed URL + limit */}}
+{{/* =========================================================
+   Substack Feed Grid (Robust + Cache-Safe)
+   ========================================================= */}}
+
 {{ $url := .Site.Params.substackFeed }}
 {{ $limit := .Site.Params.substackLimit | default 4 }}
 
 {{ if $url }}
 <div class="substack-grid-wrapper">
 
-    {{ with resources.GetRemote $url | transform.Unmarshal }}
+  {{ with resources.GetRemote $url | transform.Unmarshal }}
 
+    {{/* Substack RSS is already sorted newest-first.
+         Do NOT sort by pubDate — Hugo parses it unreliably */}}
     {{ $posts := first $limit .channel.item }}
 
     <div class="substack-grid">
 
-        {{ range $posts }}
+      {{ range $posts }}
 
-            {{/* --- 1. START: Extract excerpt --- */}}
-            {{ $excerpt := .encoded | safeHTML | plainify | truncate 140 }}
+        {{/* ---------------------------------------------
+             Excerpt
+        --------------------------------------------- */}}
+        {{ $excerpt := .encoded | safeHTML | plainify | truncate 140 }}
 
-            {{/* --- 2. START: Determine post image --- */}}
-            {{ $img := "" }}
+        {{/* ---------------------------------------------
+             Image resolution pipeline
+        --------------------------------------------- */}}
 
-            {{/* Case A — enclosure image exists */}}
-            {{ with .enclosure }}
-                {{ $img = index . "url" }}
-            {{ end }}
+        {{ $img := "" }}
 
-            {{/* Case B — extract first <img> from encoded HTML */}}
-            {{ if not $img }}
-                {{ $html := .encoded | safeHTML }}
-                {{ $found := findRE `img.*src="([^"]+)"` $html 1 }}
-                {{ if $found }}
-                    {{ $img = replaceRE `.*src="([^"]+)".*` "$1" (index $found 0) }}
-                {{ end }}
-            {{ end }}
-
-            {{/* Case C — detect YouTube in content and extract video ID */}}
-            {{ if not $img }}
-                {{ $yt := findRE `(?:youtube\.com\/embed\/|youtube-nocookie\.com\/embed\/|youtu\.be\/)([A-Za-z0-9_-]+)` .encoded 1 }}
-                {{ if $yt }}
-                    {{ $id := replaceRE `.*(embed\/|youtu\.be\/)([A-Za-z0-9_-]+).*` "$2" (index $yt 0) }}
-                    {{/* Use YouTube max resolution thumbnail */}}
-                    {{ $img = printf "https://img.youtube.com/vi/%s/maxresdefault.jpg" $id }}
-                {{ end }}
-            {{ end }}
-
-            {{/* Case D — final fallback */}}
-            {{ if not $img }}
-                {{ $img = "/images/substack-placeholder.png" }}
-            {{ end }}
-
-            {{/* --- 3. Render card --- */}}
-            <div class="substack-card" onclick="window.location='{{ .link }}'">
-
-                <div class="substack-card-image">
-                    <img src="{{ $img }}" alt="{{ .title | htmlUnescape }}">
-                </div>
-
-                <div class="substack-card-content">
-                    <h3 class="substack-card-title">{{ .title | htmlUnescape }}</h3>
-                    <p class="substack-card-excerpt">{{ $excerpt }}</p>
-                    <p class="substack-card-date">{{ dateFormat "02 Jan 2006" .pubDate }}</p>
-                </div>
-
-            </div>
-
+        {{/* 1️⃣ Enclosure image */}}
+        {{ with .enclosure }}
+          {{ if and (isset . "url") (ne (index . "url") "") }}
+            {{ $img = index . "url" }}
+          {{ end }}
         {{ end }}
 
+        {{/* 2️⃣ First <img> inside content */}}
+        {{ if not $img }}
+          {{ $html := .encoded | safeHTML }}
+          {{ $found := findRE `<img[^>]+src="([^"]+)"` $html 1 }}
+          {{ if $found }}
+            {{ $img = replaceRE `.*src="([^"]+)".*` "$1" (index $found 0) }}
+          {{ end }}
+        {{ end }}
+
+        {{/* 3️⃣ YouTube embed → thumbnail */}}
+        {{ if not $img }}
+          {{ $yt := findRE `(youtube\.com\/embed\/|youtube-nocookie\.com\/embed\/|youtu\.be\/)([A-Za-z0-9_-]+)` .encoded 1 }}
+          {{ if $yt }}
+            {{ $id := replaceRE `.*(embed\/|youtu\.be\/)([A-Za-z0-9_-]+).*` "$2" (index $yt 0) }}
+            {{ $img = printf "https://img.youtube.com/vi/%s/maxresdefault.jpg" $id }}
+          {{ end }}
+        {{ end }}
+
+        {{/* 4️⃣ Final fallback */}}
+        {{ if not $img }}
+          {{ $img = "/images/substack-placeholder.png" }}
+        {{ end }}
+
+        {{/* ---------------------------------------------
+             Card
+        --------------------------------------------- */}}
+
+        <div class="substack-card" onclick="window.location='{{ .link }}'">
+
+          <div class="substack-card-image">
+            <img src="{{ $img }}" alt="{{ .title | htmlUnescape }}">
+          </div>
+
+          <div class="substack-card-content">
+            <h3 class="substack-card-title">
+              {{ .title | htmlUnescape }}
+            </h3>
+
+            <p class="substack-card-excerpt">
+              {{ $excerpt }}
+            </p>
+
+            <p class="substack-card-date">
+              {{ dateFormat "02 Jan 2006" .pubDate }}
+            </p>
+          </div>
+
+        </div>
+
+      {{ end }}
+
     </div>
-    {{ end }}
+  {{ end }}
 
 </div>
 {{ end }}
