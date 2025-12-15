@@ -20,9 +20,11 @@ Details of sound libraries to follow shortly
 
 ## Tools & Experiments
 
+
+
 ### Unstable Memory Hardware (Prototype)
-Gnerative audio app
-SDR Ghost Radio Project with ESP32
+Generative audio app
+Ghost Radio Project with ESP32
 
 ### TouchDesigner Patches
 Glitch, VHS and databending components for AV performance.
