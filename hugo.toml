@@ -17,10 +17,42 @@ unsafe = true
   substackLimit = 4
   header.layout = "basic"
 
+
+
+
+
+
 [caches]
   [caches.getresource]
     dir = ":resourceDir/_gen"
     maxAge = "0s"
 
 
-  
+[params.footer]
+  showSocialIcons = true
+
+
+[[params.social]]
+    name = "Email"
+    icon = "email"
+    link = "mailto:shetronic@gmail.com"
+
+  [[params.social]]
+    name = "SoundCloud"
+    icon = "soundcloud"
+    link = "https://soundcloud.com/shedtronic"
+
+  [[params.social]]
+    name = "Bandcamp"
+    icon = "bandcamp"
+    link = "https://horsesofthegods.bandcamp.com"
+
+  [[params.social]]
+    name = "Substack"
+    icon = "rss"
+    link = "https://pushingtheenvelopegenerator.substack.com"
+
+  [[params.social]]
+    name = "LinkedIn"
+    icon = "linkedin"
+    link = "https://www.linkedin.com/in/mikeballard-sound/"

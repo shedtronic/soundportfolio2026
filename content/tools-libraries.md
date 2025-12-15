@@ -5,25 +5,24 @@ description: "Sound libraries, patches, hardware experiments and Shedtronic tool
 
 # Tools & Libraries
 
-A growing collection of sound libraries, patches, experimental tools and hardware developed under the Shedtronic ethos.
+A growing collection of sound libraries, patches, experimental tools and hardware that I am in the process of development.
+
+
+---
+## Libraries
+
+Details of sound libraries to follow shortly
 
 ---
 
-## Sound Libraries
-
-### Leviathans of the Deep and Dark
-Atmospheric sub-oceanic soundscapes and textures.  
-(Link to Gumroad/Pond5 if applicable.)
-
-### Haunted Interiors
-Domestic soundworlds, hums, rattles, EMF and uncanny textures.
-
 ---
+
 
 ## Tools & Experiments
 
 ### Unstable Memory Hardware (Prototype)
-Battery-powered generative audio tool built around ESP32.
+Gnerative audio app
+SDR Ghost Radio Project with ESP32
 
 ### TouchDesigner Patches
 Glitch, VHS and databending components for AV performance.

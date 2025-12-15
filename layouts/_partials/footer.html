@@ -1,0 +1,16 @@
+
+<footer class="py-10 print:hidden">
+{{ if .Site.Params.social }}
+  <div class="flex gap-4 mt-4">
+    {{ range .Site.Params.social }}
+      <a href="{{ .link }}"
+         target="_blank"
+         rel="noopener"
+         aria-label="{{ .name }}"
+         class="text-neutral-400 hover:text-primary-400 transition">
+        {{ partial "icon.html" .icon }}
+      </a>
+    {{ end }}
+  </div>
+{{ end }}
+</footer>
