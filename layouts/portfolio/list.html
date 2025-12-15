@@ -21,9 +21,17 @@
 
       <a href="{{ .RelPermalink }}">
 
-        {{ with .Params.thumbnail }}
-          <img class="project-thumb" src="{{ . | relURL }}" alt="{{ $.Title }} thumbnail">
-        {{ end }}
+        {{ $img := "" }}
+
+{{ with .Resources.GetMatch (.Params.image | default "featured*") }}
+  {{ $img = .RelPermalink }}
+{{ end }}
+
+<img
+  class="project-thumb"
+  src="{{ $img | default "/images/default-card.png" }}"
+  alt="{{ .Title }}"
+>
 
         <h2 class="project-title">{{ .Title }}</h2>
 

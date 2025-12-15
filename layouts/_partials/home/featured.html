@@ -7,11 +7,18 @@
       <article class="featured-card">
         <a href="{{ .RelPermalink }}">
           
-          {{ with .Params.image }}
-            <img class="featured-image" src="{{ . }}" alt="{{ $.Title }}">
-          {{ else }}
-            <img class="featured-image" src="/images/default-card.png" alt="Featured image">
-          {{ end }}
+         {{ $img := "" }}
+
+{{ with .Resources.GetMatch (.Params.image | default "featured*") }}
+  {{ $img = .RelPermalink }}
+{{ end }}
+
+<img
+  class="featured-image"
+  src="{{ $img | default "/images/default-card.png" }}"
+  alt="{{ .Title }}"
+>
+
 
           <div class="featured-text">
             <h3>{{ .Title }}</h3>
