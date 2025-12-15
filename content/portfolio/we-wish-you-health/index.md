@@ -2,9 +2,10 @@
 title: "We Wish You Health"
 summary: "A narrative soundworld blending folk horror, hauntology, and experimental composition."
 weight: 0
-thumbnail: "images/portfolio/unstable-memory.png"
 tags: ["Experimental Tools", "Game Audio", "Glitch Systems"]
 featured: true
+image: featured.jpg
+
 ---
 
 ## Overview  

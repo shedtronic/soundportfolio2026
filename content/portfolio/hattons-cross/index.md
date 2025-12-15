@@ -2,9 +2,11 @@
 title: "Hattons Cross"
 summary: "Sound design, dialogue editing, and scoring for a collaborative animated short."
 weight: 0
-thumbnail: "images/portfolio/unstable-memory.png"
 tags: ["Film Audio", "Dialogue", "Score"]
+thumbnail: featured.png
+image: feature.png
 featured: true
+
 ---
 
 

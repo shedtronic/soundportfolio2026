@@ -2,9 +2,9 @@
 title: "Unstable Memory"
 summary: "A browser-based glitch instrument exploring instability, fragmentation, and audiovisual noise systems."
 weight: 0
-thumbnail: "images/portfolio/unstable-memory.png"
 tags: ["Experimental Tools", "Game Audio", "Glitch Systems"]
 featured: true
+image: featured.png
 ---
 
 ## Overview  
