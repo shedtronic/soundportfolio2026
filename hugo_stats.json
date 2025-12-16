@@ -40,6 +40,7 @@
       "-start-6",
       "absolute",
       "align-text-bottom",
+      "availability",
       "bg-neutral-900",
       "border-dotted",
       "border-neutral-400",

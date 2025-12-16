@@ -5,7 +5,7 @@ description: "Sound designer and composer working across film, games and experim
 
 # About
 
-I’m a sound designer, composer, and creative technologist who combines a background in experimental music, field recording, and immersive media. I approach every project with a focus on emotional resonance.
+I’m a sound designer and multi-instrumentalist with a background in experimental music, field recording, and immersive media. I approach every project with a focus on emotional resonance.
 
 I’ve always been drawn to the relationship between place, sound, and music, and my work reflects this by merging real-world recordings with composition, sound design, and dynamic audio systems.
 
