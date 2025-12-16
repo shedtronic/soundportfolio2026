@@ -2,7 +2,7 @@
 title: "We Wish You Health"
 summary: "A narrative soundworld blending folk horror, hauntology, and experimental composition."
 weight: 0
-tags: ["Folk", "Folk Horror", "Album", "Sound Design "]
+tags: ["Folk", "Folk Horror", "Album", "Sound Design"]
 featured: true
 image: featured.jpg
 

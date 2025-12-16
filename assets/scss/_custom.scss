@@ -396,6 +396,18 @@ p, li {
 }
 
 
+/* ============================================= */
+/* ============= Large Screens =========== */
+/* ============================================= */
+
+
+/* Increase overall site width on large screens */
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
 
 
 
@@ -414,6 +426,28 @@ p, li {
   }
 }
 
+
+/* Featured + portfolio grids can go wider */
+.featured-grid,
+.project-grid,
+.substack-grid {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.fullwidth-media {
+  width: 100vw;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fullwidth-media iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
 
 
 /* =============================== */

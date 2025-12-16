@@ -14,12 +14,13 @@ atmospheric scoring, narrative sound design, glitch-driven instruments, and coll
 - Unstable Memory (browser instrument, audiovisual systems)
 - Noisevember (daily sound design + generative visuals)
 - Web-based sound tools & prototypes
-
+- The Horses of the Gods - Unreleased album
+- Game Jam - 
 ### 2020–2023 — Film, Collaboration & Narrative Sound
 - Hattons Cross (animated short)
-- Voice-driven sound design and remote collaboration
+- Voice-driven sound design and remote collaborations with Fable Feast Immersive Theatre company
 - Scoring and dialogue integration
 
-### 2016–2019 — Music, Albums & Long-form Sound Worlds
+### 2016–2020 — Music, Albums & Long-form Sound Worlds
 - We Wish You Health (album) The Horses of the Gods
 - Band-based production and release cycles

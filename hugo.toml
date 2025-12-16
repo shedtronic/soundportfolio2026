@@ -16,9 +16,8 @@ unsafe = true
   substackFeed = "https://pushingtheenvelopegenerator.substack.com/feed"
   substackLimit = 4
   header.layout = "basic"
-
-
-
+  showMenu = true
+  enableSearch = false
 
 
 
@@ -56,3 +55,6 @@ unsafe = true
     name = "LinkedIn"
     icon = "linkedin"
     link = "https://www.linkedin.com/in/mikeballard-sound/"
+
+
+  
