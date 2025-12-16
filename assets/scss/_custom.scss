@@ -419,6 +419,17 @@ p, li {
 }
 
 
+.media-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.media-container iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
 
 
 /* ============================================= */
