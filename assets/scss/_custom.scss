@@ -421,11 +421,11 @@ p, li {
 /* Increase overall site width on large screens */
 @media (min-width: 1400px) {
   .container {
-    max-width: 1600px;
+    max-width: 1400px;
   }
 
     .media-container {
-    max-width: 1600px;
+    max-width: 1400px;
     margin: 0 auto;
   }
 
@@ -436,7 +436,7 @@ p, li {
   }
 
   .intro-text {
-    max-width: 1600px;
+    max-width: 1400px;
     margin: 0 auto;
   }
 }
@@ -465,7 +465,7 @@ p, li {
 .featured-grid,
 .project-grid,
 .substack-grid {
-  max-width: 1600px;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
 }
