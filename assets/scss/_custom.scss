@@ -423,24 +423,26 @@ p, li {
   .container {
     max-width: 1400px;
   }
+
+    .media-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .media-container iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .intro-text {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
 }
 
 
-.media-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}*/
 
-.media-container iframe {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-}
-
-.intro-text {
-  max-width: 1400px;
-  margin: 0 auto;
-}
 
 
 /* ============================================= */
