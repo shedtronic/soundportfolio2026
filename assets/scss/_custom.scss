@@ -20,6 +20,13 @@ main,
   width: 100% !important;
 }
 
+/* ONLY full-width sections should escape layout */
+.full-bleed,
+.broadcast-hero {
+  max-width: 100% !important;
+}
+
+
 /* Basic breathing room */
 body {
   padding-left: 1.5rem !important;
@@ -180,11 +187,11 @@ body {
 /* ============ VIDEO FIX — SAFE FULL WIDTH ===== */
 /* ============================================= */
 
-.hero-video {
+/*.hero-video {
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-}
+}*/
 
 .hero-video iframe {
   width: 100%;
@@ -222,7 +229,7 @@ p, li {
 /* ============================================= */
 
 .substack-feed {
-  max-width: 65ch;
+  max-width: 1400px;
   margin: 3rem auto;
   padding: 0 1rem;
 }
@@ -248,10 +255,10 @@ p, li {
 /* ========= SUBSTACK CARD GRID ================ */
 /* ============================================= */
 
-.substack-grid-wrapper {
+/*.substack-grid-wrapper {
   margin: 4rem auto;
   max-width: 1400px;
-}
+}*/
 
 .substack-grid {
   display: grid;
@@ -419,10 +426,10 @@ p, li {
 }
 
 
-.media-container {
+/*.media-container {
   max-width: 1200px;
   margin: 0 auto;
-}
+}*/
 
 .media-container iframe {
   width: 100%;
@@ -519,3 +526,16 @@ p, li {
 }
 
 
+/* =============================== */
+/* ===== GLOBAL MEDIA WIDTH ====== */
+/* =============================== */
+
+.media-container,
+.hero-video,
+.substack-feed,
+.featured-grid,
+.project-grid {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
