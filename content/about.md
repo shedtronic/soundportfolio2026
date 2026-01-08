@@ -5,16 +5,25 @@ description: "Sound designer and composer working across film, games and experim
 
 # About
 
-I’m a sound designer and multi-instrumentalist with a background in experimental music, field recording, and immersive media. I approach every project with a focus on emotional resonance.
+I’m a sound designer and multi-instrumentalist whose practice is rooted in listening to place, atmosphere, and the traces environments leave behind. I work with field recording, experimental processes, and immersive audio to create environments that feel inhabited, often shaped by subtle instability, tension, and emotional resonance.
 
-I’ve always been drawn to the relationship between place, sound, and music, and my work reflects this by merging real-world recordings with composition, sound design, and dynamic audio systems.
-
-Alongside experimental and procedural approaches, I regularly create soundtracks, themes, and atmospheric scores for film, games, and interactive media. My experience spans collaborative projects including full sound design and original music for animated shorts, game audio systems, and immersive sonic environments that support narrative, emotion, and world-building.
+I’m drawn to the relationship between sound, memory, and landscape, and I often merge real-world recordings with composition, sound design, and dynamic audio systems to support narrative and world-building. My work spans film, games, and interactive/immersive media, from full sound design and original music to reactive soundscapes and procedural audio approaches.
 
 ## What I Do
 - Atmospheric sound design for film, games and interactive media
-- Original composition, themes, and soundtrack work 
+- Original composition, themes, and soundtrack work
 - Field recording, Foley, and environmental sound creation 
-- EExperimental and procedural audio systems  
+- Experimental and procedural audio systems  
 - Immersive media, installations, and live performance  
+
+
+## How I Work
+
+
+
+- Collaborative, responsive, iteration-friendly
+- Clear versioning and deliveries
+- Happy working from a brief or exploring early concepts together
+
+
 

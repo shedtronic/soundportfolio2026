@@ -107,6 +107,8 @@ body {
 }
 
 
+
+
 /* ============================================= */
 /* OPTION C — FULL-WIDTH CINEMATIC HERO TITLE    */
 /* ============================================= */
@@ -116,6 +118,11 @@ body {
   margin-bottom: 2rem;
   text-align: center;
   width: 100%;
+}
+
+.homepage-intro{
+
+  padding-top:2%;
 }
 
 /* One-line cinematic statement */
@@ -406,6 +413,16 @@ p, li {
   margin-top: 1rem;
   margin-bottom: 2rem;
   font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.herosubtitle {
+
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   opacity: 0.75;

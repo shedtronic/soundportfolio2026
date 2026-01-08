@@ -5,7 +5,7 @@ description: "Sound libraries, patches, hardware experiments and Shedtronic tool
 
 # Tools & Libraries
 
-A growing collection of sound libraries, patches, experimental tools and hardware that I am in the process of development.
+A growing collection of sound libraries, patches, experimental tools and hardware that are in the process of development.
 
 
 ---
